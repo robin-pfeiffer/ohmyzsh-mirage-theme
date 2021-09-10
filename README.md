@@ -4,7 +4,7 @@
 
 - Non-null exitcode visulation
 - Show presence of sudo timestamp file
-- Show current active virtual environment
+- Git support
 
 ## Installation
 
@@ -15,5 +15,3 @@ git clone git@github.com:robin-pfeiffer/ohmyzsh-mirage-theme.git
 cd ohmyzsh-mirage-theme
 ./install.sh
 ```
-
-## Development
