@@ -12,11 +12,11 @@
 
 This assumes that you have Oh my zsh already installed and set up. If you have not done so, then follow the instructions on [their page](https://github.com/ohmyzsh/ohmyzsh#getting-started).
 
-```shell
+```sh
 git clone git@github.com:robin-pfeiffer/ohmyzsh-mirage-theme.git
 cd ohmyzsh-mirage-theme
 ./install.sh
-  # Restart zsh
+source ~/.zshrc
 ```
 
 ### Settings
