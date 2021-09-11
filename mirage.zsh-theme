@@ -86,9 +86,6 @@ export ZSH_THEME_SVN_PROMPT_SUFFIX="%B%F{blue})%f%b"
 export ZSH_THEME_SVN_PROMPT_DIRTY=" %B%F{yellow}±%f%b"
 export ZSH_THEME_SVN_PROMPT_CLEAN=" %B%F{green}✓%f%b"
 
-# disables prompt mangling in virtual_env/bin/activate
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-
 THEME_SHOW_SCM=${THEME_SHOW_SCM:-true}
 THEME_SHOW_USER_INFO=${THEME_SHOW_USER_INFO:-true}
 THEME_SHOW_EXITCODE=${THEME_SHOW_EXITCODE:-true}
@@ -111,7 +108,8 @@ ___mirage() {
 }
 
 __mirage_ps1() {
-    ___mirage
+    PS1="$(___mirage)"
+    echo -n "$PS1"
 }
 
 _mirage_prompt() {
