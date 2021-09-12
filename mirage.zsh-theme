@@ -54,7 +54,7 @@ ___mirage_prompt_dir() {
 }
 
 ___mirage_prompt_host_info() {
-    build_segment "on %B%F{magenta}%m%f%b"
+    build_segment "at %B%F{magenta}%m%f%b"
 }
 
 ___mirage_prompt_user_info() {
