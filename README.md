@@ -4,7 +4,7 @@
 
 ## Features
 
-- Non-null exitcode visulation
+- Non-null exitcode visualization
 - Show presence of sudo timestamp file
 - Git support
 
