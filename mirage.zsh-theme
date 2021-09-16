@@ -44,7 +44,7 @@ ___mirage_prompt_user_info() {
     # this session and is still valid)
     # activate: sudo su
     # reset: sudo -k
-    ("$THEME_SHOW_USER_INFO") &&
+    ("$THEME_SHOW_SUDO") &&
         sudo -vn 1> /dev/null 2>&1 &&
         color="%B%F{red}"
 
@@ -74,7 +74,7 @@ export ZSH_THEME_SVN_PROMPT_DIRTY=" %B%F{yellow}±%f%b"
 export ZSH_THEME_SVN_PROMPT_CLEAN=" %B%F{green}✓%f%b"
 
 THEME_SHOW_SCM=${THEME_SHOW_SCM:-true}
-THEME_SHOW_USER_INFO=${THEME_SHOW_USER_INFO:-true}
+THEME_SHOW_SUDO=${THEME_SHOW_SUDO:-true}
 THEME_SHOW_EXITCODE=${THEME_SHOW_EXITCODE:-true}
 THEME_SHOW_VENV=${THEME_SHOW_VENV:-true}
 
