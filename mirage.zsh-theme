@@ -11,12 +11,7 @@ build_segment() {
     echo -n $segment
 }
 
-___mirage_prompt_start() {
-    # Reset text options
-    echo -n "%{%k%f%b%}"
-}
-
-___mirage_prompt_end() {
+___mirage_prompt_reset() {
     # Reset text options
     echo -n "%{%k%f%b%}"
 }
@@ -86,13 +81,13 @@ THEME_SHOW_VENV=${THEME_SHOW_VENV:-true}
 ___MIRAGE=${___MIRAGE:-"exitcode user_info host_info dir scm venv"}
 
 ___mirage() {
-    ___mirage_prompt_start
+    ___mirage_prompt_reset
     
     for seg in ${=___MIRAGE}; do
         ___mirage_prompt_$seg  
     done
 
-    ___mirage_prompt_end
+    ___mirage_prompt_reset
 }
 
 __mirage_ps1() {
