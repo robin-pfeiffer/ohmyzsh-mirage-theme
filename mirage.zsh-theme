@@ -21,27 +21,11 @@ ___mirage_prompt_end() {
     echo -n "%{%k%f%b%}"
 }
 
-
-# Venv subsegments
-
-___mirage_prompt_venv_python() {
-    # local venv_path="$VIRTUAL_ENV"
-    # if [[ -n $virtualenv_path && -ne $THEME_SHOW_VENV ]]; then
-        # build_segment `basename $virtualenv_path`
-    # fi
-}
-
 # Segments
 
 ___mirage_prompt_venv() {
-    local -a subsegments
-    for venv_seg in ${=___MIRAGE_VENV}; do
-        subsegments+=$(___mirage_prompt_venv_$venv_seg)
-    done
-
-    [[ -z $subsegments ]] && return
-
-    build_segment "%B%F{white}venv:(%f%b$subsegments%B%F{white})%f%b"
+    [[ -n $VIRTUAL_ENV && $THEME_SHOW_VENV ]] &&
+        build_segment "%B%F{white}venv:(%f%b${VIRTUAL_ENV:t}%B%F{white})%f%b"
 }
 
 ___mirage_prompt_scm() {
@@ -76,6 +60,9 @@ ___mirage_prompt_exitcode() {
     build_segment "$color❯%f%b"
 }
 
+# Prevent prompt mangling from venv/bin/activate
+export VIRTUAL_ENV_DISABLE_PROMPT=true
+
 export ZSH_THEME_GIT_PROMPT_PREFIX="%B%F{blue}git:(%f%b"
 export ZSH_THEME_GIT_PROMPT_SUFFIX="%B%F{blue})%f%b"
 export ZSH_THEME_GIT_PROMPT_DIRTY=" %B%F{yellow}±%f%b"
@@ -90,9 +77,6 @@ THEME_SHOW_SCM=${THEME_SHOW_SCM:-true}
 THEME_SHOW_USER_INFO=${THEME_SHOW_USER_INFO:-true}
 THEME_SHOW_EXITCODE=${THEME_SHOW_EXITCODE:-true}
 THEME_SHOW_VENV=${THEME_SHOW_VENV:-true}
-
-# Define order of venv to show
-___MIRAGE_VENV=${___MIRAGE_VENV:-"python"}
 
 # Define order of main segments to show
 ___MIRAGE=${___MIRAGE:-"exitcode user_info host_info dir scm venv"}
