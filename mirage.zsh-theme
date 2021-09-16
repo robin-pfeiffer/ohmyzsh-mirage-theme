@@ -19,12 +19,13 @@ ___mirage_prompt_reset() {
 # Segments
 
 ___mirage_prompt_venv() {
-    [[ -n $VIRTUAL_ENV && $THEME_SHOW_VENV ]] &&
+    ("$THEME_SHOW_VENV") &&
+        [[ -n $VIRTUAL_ENV ]] &&
         build_segment "%B%F{white}venv:(%f%b${VIRTUAL_ENV:t}%B%F{white})%f%b"
 }
 
 ___mirage_prompt_scm() {
-    [[ "$THEME_SHOW_SCM" ]] &&
+    ("$THEME_SHOW_SCM") &&
         build_segment "$(git_prompt_info)"
 }
 
@@ -43,7 +44,7 @@ ___mirage_prompt_user_info() {
     # this session and is still valid)
     # activate: sudo su
     # reset: sudo -k
-    [[ "$THEME_SHOW_USER_INFO" ]] &&
+    ("$THEME_SHOW_USER_INFO") &&
         sudo -vn 1> /dev/null 2>&1 &&
         color="%B%F{red}"
 
@@ -52,7 +53,7 @@ ___mirage_prompt_user_info() {
 
 ___mirage_prompt_exitcode() {
     color="%B%F{green}"
-    [[ "$THEME_SHOW_EXITCODE" ]] &&
+    ("$THEME_SHOW_EXITCODE") &&
         [[ "$exitcode" -ne 0 ]] &&
         color="%B%F{red}"
     
