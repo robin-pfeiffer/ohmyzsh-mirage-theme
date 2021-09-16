@@ -6,6 +6,7 @@
 
 - Non-null exitcode visualization
 - Show presence of sudo timestamp file
+- Show current active virtual environment
 - Git support
 
 ## Installation
