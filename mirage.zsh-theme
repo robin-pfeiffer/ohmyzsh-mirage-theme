@@ -44,6 +44,10 @@ ___mirage_prompt_host_info() {
 ___mirage_prompt_user_info() {
     color="%B%F{blue}"
 
+    # Shows if sudo has a timestamp file (sudo has been used within 
+    # this session and is still valid)
+    # activate: sudo su
+    # reset: sudo -k
     [[ "$THEME_SHOW_USER_INFO" ]] &&
         sudo -vn 1> /dev/null 2>&1 &&
         color="%B%F{red}"
