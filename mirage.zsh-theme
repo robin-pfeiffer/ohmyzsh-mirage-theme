@@ -13,7 +13,7 @@ build_segment() {
 
 ___mirage_prompt_reset() {
     # Reset text options
-    echo -n "%{%k%f%b%}"
+    echo -n "%{%k%f%}"
 }
 
 # Segments
@@ -21,7 +21,7 @@ ___mirage_prompt_reset() {
 ___mirage_prompt_venv() {
     ("$THEME_SHOW_VENV") &&
         [[ -n $VIRTUAL_ENV ]] &&
-        build_segment "%B%F{white}venv:(%f%b${VIRTUAL_ENV:t}%B%F{white})%f%b"
+        build_segment "%F{white}venv:(%f${VIRTUAL_ENV:t}%F{white})%f"
 }
 
 ___mirage_prompt_scm() {
@@ -30,15 +30,15 @@ ___mirage_prompt_scm() {
 }
 
 ___mirage_prompt_dir() {
-    build_segment "in %B%F{cyan}%1~%f%b"
+    build_segment "in %F{cyan}%1~%f"
 }
 
 ___mirage_prompt_host_info() {
-    build_segment "at %B%F{magenta}%m%f%b"
+    build_segment "at %F{magenta}%m%f"
 }
 
 ___mirage_prompt_user_info() {
-    color="%B%F{blue}"
+    color="%F{blue}"
 
     # Shows if sudo has a timestamp file (sudo has been used within 
     # this session and is still valid)
@@ -46,32 +46,32 @@ ___mirage_prompt_user_info() {
     # reset: sudo -k
     ("$THEME_SHOW_SUDO") &&
         sudo -vn 1> /dev/null 2>&1 &&
-        color="%B%F{red}"
+        color="%F{red}"
 
-    build_segment "$color%n%f%b"
+    build_segment "$color%n%f"
 }
 
 ___mirage_prompt_exitcode() {
-    color="%B%F{green}"
+    color="%F{green}"
     ("$THEME_SHOW_EXITCODE") &&
         [[ "$exitcode" -ne 0 ]] &&
-        color="%B%F{red}"
+        color="%F{red}"
     
-    build_segment "$color❯%f%b"
+    build_segment "$color❯%f"
 }
 
 # Prevent prompt mangling from venv/bin/activate
 export VIRTUAL_ENV_DISABLE_PROMPT=true
 
-export ZSH_THEME_GIT_PROMPT_PREFIX="%B%F{blue}git:(%f%b"
-export ZSH_THEME_GIT_PROMPT_SUFFIX="%B%F{blue})%f%b"
-export ZSH_THEME_GIT_PROMPT_DIRTY=" %B%F{yellow}±%f%b"
-export ZSH_THEME_GIT_PROMPT_CLEAN=" %B%F{green}✓%f%b"
+export ZSH_THEME_GIT_PROMPT_PREFIX="%F{blue}git:(%f"
+export ZSH_THEME_GIT_PROMPT_SUFFIX="%F{blue})%f"
+export ZSH_THEME_GIT_PROMPT_DIRTY=" %F{yellow}±%f"
+export ZSH_THEME_GIT_PROMPT_CLEAN=" %F{green}✓%f"
 
-export ZSH_THEME_SVN_PROMPT_PREFIX="%B%F{blue}svn:(%f%b"
-export ZSH_THEME_SVN_PROMPT_SUFFIX="%B%F{blue})%f%b"
-export ZSH_THEME_SVN_PROMPT_DIRTY=" %B%F{yellow}±%f%b"
-export ZSH_THEME_SVN_PROMPT_CLEAN=" %B%F{green}✓%f%b"
+export ZSH_THEME_SVN_PROMPT_PREFIX="%F{blue}svn:(%f"
+export ZSH_THEME_SVN_PROMPT_SUFFIX="%F{blue})%f"
+export ZSH_THEME_SVN_PROMPT_DIRTY=" %F{yellow}±%f"
+export ZSH_THEME_SVN_PROMPT_CLEAN=" %F{green}✓%f"
 
 THEME_SHOW_SCM=${THEME_SHOW_SCM:-true}
 THEME_SHOW_SUDO=${THEME_SHOW_SUDO:-true}
