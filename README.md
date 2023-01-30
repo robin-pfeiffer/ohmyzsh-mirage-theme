@@ -6,8 +6,8 @@
 
 - Non-null exitcode visualization
 - Show presence of sudo timestamp file
-- Show current active virtual environment
-- Git support
+- Show current active Python virtual environment
+- Show version control changes
 
 ## Installation
 
@@ -30,3 +30,7 @@ export THEME_SHOW_EXITCODE=true
 export THEME_SHOW_SCM=true
 export THEME_SHOW_VENV=true
 ```
+
+## License
+
+Distributed under MIT License. See [LICENSE](./LICENSE) for more information.
