@@ -63,13 +63,14 @@ ___mirage_prompt_exitcode() {
 # Prevent prompt mangling from venv/bin/activate
 export VIRTUAL_ENV_DISABLE_PROMPT=true
 
-export ZSH_THEME_GIT_PROMPT_PREFIX="%F{blue}git:(%f"
-export ZSH_THEME_GIT_PROMPT_SUFFIX="%F{blue})%f"
-export ZSH_THEME_GIT_PROMPT_DIRTY=" %F{yellow}±%f"
-export ZSH_THEME_GIT_PROMPT_CLEAN=" %F{green}✓%f"
+# export ZSH_THEME_GIT_PROMPT_PREFIX="on %F{blue}"
+export ZSH_THEME_GIT_PROMPT_PREFIX="$ZSH_THEME_SVN_PROMPT_PREFIX"
+export ZSH_THEME_GIT_PROMPT_SUFFIX="$ZSH_THEME_SVN_PROMPT_SUFFIX"
+export ZSH_THEME_GIT_PROMPT_DIRTY="$ZSH_THEME_SVN_PROMPT_DIRTY"
+export ZSH_THEME_GIT_PROMPT_CLEAN="$ZSH_THEME_SVN_PROMPT_CLEAN"
 
-export ZSH_THEME_SVN_PROMPT_PREFIX="%F{blue}svn:(%f"
-export ZSH_THEME_SVN_PROMPT_SUFFIX="%F{blue})%f"
+export ZSH_THEME_SVN_PROMPT_PREFIX="on %F{blue}"
+export ZSH_THEME_SVN_PROMPT_SUFFIX="%f"
 export ZSH_THEME_SVN_PROMPT_DIRTY=" %F{yellow}±%f"
 export ZSH_THEME_SVN_PROMPT_CLEAN=" %F{green}✓%f"
 
